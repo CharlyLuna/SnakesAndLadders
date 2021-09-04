@@ -99,39 +99,48 @@ class Board {
     ) {
       this._player1.move(this._dice.throw());
       this._player2.move(this._dice.throw());
-      let player1Pos = this._player1.getPosition();
-      let player2Pos = this._player2.getPosition();
-      console.log(`El jugador 1 esta en la posicion ${player1Pos}`);
+      console.log(
+        `El jugador 1 esta en la posicion ${this._player1.getPosition()}`
+      );
       /* Si el jugador cae en una escalera se comprueba con el metodo 
       y asciende a la casilla correspondiente, si sale falso entonces 
       significa que cayó en una serpiente y desciende a la casilla que corresponda */
-      if (this.isLadderOrSnake(player1Pos)) {
-        this._player1.useLadder(this._cells[player1Pos]);
+      if (this.isLadderOrSnake(this._player1.getPosition())) {
+        this._player1.useLadder(this._cells[this._player1.getPosition()]);
         // assciende a la casilla que esta guardada como posicion final de la escalera
         console.log(
           `Escalera! el jugador 1 esta ahora en la posicion ${this._player1.getPosition()}`
         );
-      } else if (this.isLadderOrSnake(player1Pos) === false) {
-        this._player1.useSnake(this._cells[player1Pos]);
+      } else if (this.isLadderOrSnake(this._player1.getPosition()) === false) {
+        this._player1.useSnake(this._cells[this._player1.getPosition()]);
         // desciende a la casilla que esta guardada como posicion final de la serpiente
         console.log(
           `Serpiente! el jugador 1 esta ahora en la posicion ${this._player1.getPosition()}`
         );
       }
-      console.log(`El jugador 2 esta en la posicion ${player2Pos}`);
-      if (this.isLadderOrSnake(player2Pos)) {
-        this._player2.useLadder(this._cells[player2Pos]);
+      console.log(
+        `El jugador 2 esta en la posicion ${this._player2.getPosition()}`
+      );
+      if (this.isLadderOrSnake(this._player2.getPosition())) {
+        this._player2.useLadder(this._cells[this._player2.getPosition()]);
         // assciende a la casilla que esta guardada como posicion final de la escalera
         console.log(
           `Escalera! el jugador 2 esta ahora en la posicion ${this._player2.getPosition()}`
         );
-      } else if (this.isLadderOrSnake(player2Pos) === false) {
-        this._player2.useSnake(this._cells[player2Pos]);
+      } else if (this.isLadderOrSnake(this._player2.getPosition()) === false) {
+        this._player2.useSnake(this._cells[this._player2.getPosition()]);
         // desciende a la casilla que esta guardada como posicion final de la serpiente
         console.log(
-          `Serpiente! el jugador 1 esta ahora en la posicion ${this._player2.getPosition()}`
+          `Serpiente! el jugador 2 esta ahora en la posicion ${this._player2.getPosition()}`
         );
       }
+    }
+    if (player1.getPosition() >= 100 && player2.getPosition() < 100) {
+      console.log("Ganó el jugador 1");
+    } else if (player1.getPosition() >= 100 && player2.getPosition() >= 100) {
+      console.log("Es un empate");
+    } else if (player1.getPosition() < 100 && player2.getPosition() >= 100) {
+      console.log("Ganó el jugador 2");
     }
   }
 }
