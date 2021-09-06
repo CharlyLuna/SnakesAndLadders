@@ -95,11 +95,6 @@ class Board {
     ) {
       console.log("Ganó el jugador 1");
     } else if (
-      this._player1.getPosition() >= 100 &&
-      this._player2.getPosition() >= 100
-    ) {
-      console.log("Es un empate");
-    } else if (
       this._player1.getPosition() < 100 &&
       this._player2.getPosition() >= 100
     ) {
